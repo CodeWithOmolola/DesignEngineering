@@ -211,12 +211,12 @@ body {
     background: rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.1);
     border: none;
-    padding: 6px 10px;  /* Reduced padding for smaller buttons */
+    padding: 6px 10px;  
     cursor: pointer;
-    border-radius: 0;   /* Removed border radius for rectangular shape */
+    border-radius: 0;  
     transition: background 0.3s ease;
     z-index: 10;
-    font-size: 14px;    /* Optional: reduced font size for arrows */
+    font-size: 14px;   
 }
 
 .prev-btn {
@@ -245,88 +245,129 @@ body {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: white;     /* White when inactive */
+    background: white;    
     opacity: 35%;
     cursor: pointer;
     transition: background 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.25); /* Optional: adds subtle border */
+    border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .gallery-dot.active {
-    background: rgba(0, 0, 0, 0.1);   /* Black when active */
-}
-/*  Figure Animation */
-/* Container to hold the canvas and GIF */
-#gameContainer {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);   
 }
 
-/* Canvas for the ground line */
-#gameCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* Shrek GIF */
-#shrek {
-    position: absolute;
-    bottom: 10px; /* Adjust to align with the ground line */
-    left: 50px; /* Initial position */
-    width: 50px; /* Adjust size as needed */
-    height: auto;
-}
 
 /* Mobile View */
-@media (max-width: 768px) {
-    /* Latest Section */
+@media screen and (max-width: 768px) {
+    .header {
+        height: 50vh;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
     .latest-section {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
-    .boxes {
-        order: 2; /* Move the text below the image */
-    }
-
     .image-preview {
-        order: 1; /* Move the image above the text */
-        height: 200px; /* Adjust height for mobile */
+        order: 2;
+        height: 250px;
     }
 
-    /* Three Column Section */
+    .boxes {
+        order: 1;
+    }
+
     .three-column {
         grid-template-columns: 1fr;
         padding: 20px;
+        gap: 30px;
     }
 
-    /* Service Section */
     .service-section {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
-    /* Projects Table */
     .projects-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+        margin: 20px 0;
     }
 
-    .projects-table th,
-    .projects-table td {
-        padding: 10px;
+    .projects-table thead {
+        display: none; /* Hide table headers on mobile */
     }
+
+    .projects-table tr {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid black;
+        margin-bottom: 20px;
+    }
+
+    .projects-table td {
+        display: block;
+        border: none;
+        padding: 10px 15px;
+    }
+
 
     .project-gallery {
-        height: 150px; /* Adjust height for mobile */
+        height: 250px;
     }
 
     .gallery-nav {
-        padding: 4px 8px; /* Smaller buttons for mobile */
-        font-size: 12px;
+        padding: 15px 20px;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-dots {
+        bottom: 15px;
+    }
+
+    .gallery-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .box {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 14px !important;
+    }
+
+    h2 {
+        font-size: 18px !important;
+    }
+
+    .projects-table td p {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        height: 40vh;
+    }
+
+    .latest-section,
+    .three-column,
+    .service-section {
+        padding: 15px;
+    }
+
+    .image-preview {
+        height: 200px;
+    }
+
+    .project-gallery {
+        height: 200px;
     }
 }
