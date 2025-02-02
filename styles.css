@@ -280,3 +280,53 @@ body {
     height: auto;
 }
 
+/* Mobile View */
+@media (max-width: 768px) {
+    /* Latest Section */
+    .latest-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .boxes {
+        order: 2; /* Move the text below the image */
+    }
+
+    .image-preview {
+        order: 1; /* Move the image above the text */
+        height: 200px; /* Adjust height for mobile */
+    }
+
+    /* Three Column Section */
+    .three-column {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    /* Service Section */
+    .service-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    /* Projects Table */
+    .projects-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .projects-table th,
+    .projects-table td {
+        padding: 10px;
+    }
+
+    .project-gallery {
+        height: 150px; /* Adjust height for mobile */
+    }
+
+    .gallery-nav {
+        padding: 4px 8px; /* Smaller buttons for mobile */
+        font-size: 12px;
+    }
+}
