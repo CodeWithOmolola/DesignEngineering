@@ -192,3 +192,28 @@ document.addEventListener('DOMContentLoaded', () => {
     updateChicagoTime();
     initializeGalleries();
 });
+
+ const boxes = document.querySelectorAll('.box');
+        const imagePreview = document.querySelector('.image-preview');
+
+        if (boxes.length > 0 && imagePreview) {
+            imagePreview.style.backgroundImage = `url(${boxes[0].dataset.image})`;
+        }
+
+        boxes.forEach(box => {
+            box.addEventListener('mouseenter', () => {
+                updateImagePreview(box);
+            });
+
+            box.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                updateImagePreview(box);
+            });
+        });
+
+        function updateImagePreview(box) {
+            const imageUrl = box.dataset.image;
+            if (imagePreview && imageUrl) {
+                imagePreview.style.backgroundImage = `url(${imageUrl})`;
+            }
+        }
