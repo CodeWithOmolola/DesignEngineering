@@ -115,14 +115,17 @@
             <p>
             <table
                 style="border-collapse: collapse; text-align: left; width: 100%; font-size: 12px; font-weight: 550; margin-top: 5px;">
-
+                <tr style=" border: 2px solid white; ">
+                    <td style=" border: 2px solid white; padding:  0px  5px;"> Phone </td>
+                    <td style=" border: 2px solid white; padding:  0px  5px;"> +312 882 9926 </td>
+                </tr>
                 <tr>
                     <td style=" border: 2px solid white; padding:  0px  5px;"> Mail</td>
                     <td style=" border: 2px solid white; padding:  0px  5px;"> labstudio.work@outlook.com </td>
                 </tr>
                 <tr>
                     <td style=" border: 2px solid white; padding:  0px  5px;"> indstndrd </td>
-                    <td style=" border: 2px solid white; padding:  0px  5px;"><a href="https://indstndrd.com" style="text-decoration: none; color: #7f7f7f;">indstndrd.com</a></td>
+                    <td style=" border: 2px solid white; padding:  0px  5px;"><a href="indstndrd.com" style="text-decoration: none; color: #7f7f7f;">indstndrd.com</a></td>
                 </tr>
             </table>
             </p>
@@ -165,7 +168,7 @@
         <!-- Shrek -->
         <div class="services">
             <br> <br>
-            <h2 style="font-size: 12px; font-weight: 550;"> Website Developed by <br> Omolola Ogunlade </h2>
+            <h2 style="font-size: 12px; font-weight: 550;" id="develp"> Website Developed by <br> Omolola Ogunlade </h2>
             <br>
             <hr style="width:100%; opacity: 35%;">
         </div>
@@ -369,7 +372,30 @@
     </table>
 
     <script src="script.js">
-        
+            const boxes = document.querySelectorAll('.box');
+        const imagePreview = document.querySelector('.image-preview');
+
+        if (boxes.length > 0 && imagePreview) {
+            imagePreview.style.backgroundImage = `url(${boxes[0].dataset.image})`;
+        }
+
+        boxes.forEach(box => {
+            box.addEventListener('mouseenter', () => {
+                updateImagePreview(box);
+            });
+
+            box.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                updateImagePreview(box);
+            });
+        });
+
+        function updateImagePreview(box) {
+            const imageUrl = box.dataset.image;
+            if (imagePreview && imageUrl) {
+                imagePreview.style.backgroundImage = `url(${imageUrl})`;
+            }
+        }
     </script>
 
 
