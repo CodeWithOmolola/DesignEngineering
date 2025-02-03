@@ -13,7 +13,7 @@ particlesJS('particles-js', {
     }
 });
 
-
+// Hide particles after animation
 setTimeout(() => {
     document.getElementById('particles-js').style.display = 'none';
 }, 0);
@@ -35,6 +35,7 @@ updateChicagoTime();
 const boxes = document.querySelectorAll('.box');
 const imagePreview = document.querySelector('.image-preview');
 
+// Set initial image from first box
 if (boxes.length > 0 && imagePreview) {
     imagePreview.style.backgroundImage = `url(${boxes[0].dataset.image})`;
 }
@@ -93,15 +94,15 @@ function initializeGalleries() {
         const mediaElements = container.querySelectorAll('.gallery-image, video');
         const dotsContainer = gallery.querySelector('.gallery-dots');
         
-        
+        // Clear existing dots
         dotsContainer.innerHTML = '';
         
-
+        // Set first slide as active
         if (mediaElements.length > 0) {
             mediaElements[0].classList.add('active');
         }
         
-  
+        // Create dots
         mediaElements.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.className = `dot ${index === 0 ? 'active' : ''}`;
@@ -109,7 +110,7 @@ function initializeGalleries() {
             dotsContainer.appendChild(dot);
         });
         
-       
+        // Add navigation buttons event listeners
         const prevBtn = gallery.querySelector('.prev-btn');
         const nextBtn = gallery.querySelector('.next-btn');
         
@@ -124,7 +125,7 @@ function moveSlide(direction, container) {
     const mediaElements = container.querySelectorAll('.gallery-image, video');
     let currentIndex = Array.from(mediaElements).findIndex(el => el.classList.contains('active'));
     
-   
+    // Pause any playing videos
     const currentElement = mediaElements[currentIndex];
     if (currentElement.tagName === 'VIDEO') {
         currentElement.pause();
@@ -142,7 +143,7 @@ function showSlide(index, container) {
     const mediaElements = container.querySelectorAll('.gallery-image, video');
     const dots = container.querySelectorAll('.dot');
     
-  
+    // Hide all media elements and pause videos
     mediaElements.forEach(el => {
         el.classList.remove('active');
         if (el.tagName === 'VIDEO') {
@@ -150,15 +151,15 @@ function showSlide(index, container) {
         }
     });
     
-  
+    // Show selected media element
     mediaElements[index].classList.add('active');
 
-    
+    //
     function showSlide(index, container) {
         const mediaElements = container.querySelectorAll('.gallery-image, video');
         const dots = container.querySelectorAll('.dot');
     
-        
+        // Hide all media elements and pause videos
         mediaElements.forEach(el => {
             el.classList.remove('active');
             if (el.tagName === 'VIDEO') {
@@ -166,24 +167,28 @@ function showSlide(index, container) {
             }
         });
     
-   
+        // Show selected media element
         mediaElements[index].classList.add('active');
     
-        
+        // Play the video if it's the active element
         if (mediaElements[index].tagName === 'VIDEO') {
             mediaElements[index].play();
         }
     
-      
+        // Update dots
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
     }
     
- 
+    // Update dots
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
     });
 }
 
-
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    updateChicagoTime();
+    initializeGalleries();
+});
